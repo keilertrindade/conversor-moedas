@@ -43,7 +43,6 @@ public class Main {
                 case 7:
                     System.out.println("Saindo do programa...");
                     break;
-
                 default:
                     System.out.println("Escolha uma opção válida!");
             }
