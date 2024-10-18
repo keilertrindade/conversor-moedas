@@ -1,11 +1,13 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int opcao = -1;
-        double valor = 0;
-        //Request request = new Request();
+        int opcao;
+        double valor;
+        GerenciadorConversor gerenciador = new GerenciadorConversor();
         Scanner leitura = new Scanner(System.in);
+        Scanner pause = new Scanner(System.in);
         do{
             System.out.println("************************************");
             System.out.println("1) Dólar =>> Peso argentino");
@@ -16,73 +18,54 @@ public class Main {
             System.out.println("6) Peso colombiano =>> Dólar");
             System.out.println("7) Sair");
             System.out.print("Escolha uma opção: ");
-            //System.out.println("************************************");
-            opcao = leitura.nextInt();
-
-            /*if(opcao < 7 && opcao > 0){
-
-            } */
+            try{
+                opcao = leitura.nextInt();
+            } catch (InputMismatchException e) {
+                throw new InputMismatchException("Insira apenas valores numericos");
+            }
 
             switch (opcao){
-                case 1:
+                case 1: //USD to ARS
                     System.out.println("Insira o valor a ser convertido: ");
                     valor = leitura.nextDouble();
-                    try {
-                        double valorConvertido = Request.getExchangeRate("USD","ARS",valor);
-                        System.out.println(valor+" USD = " + valorConvertido + " ARS");
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
+                    System.out.println(gerenciador.Converter("USD","ARS", valor));
+                    System.out.print("Pressione Enter para continuar!");
+                    pause.nextLine();
                     break;
-                case 2:
+                case 2: //ARS to USD
                     System.out.println("Insira o valor a ser convertido: ");
                     valor = leitura.nextDouble();
-                    try {
-                        double valorConvertido = Request.getExchangeRate("ARS","USD",valor);
-                        System.out.println(valor+" ARS = " + valorConvertido + " USD");
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
+                    System.out.println(gerenciador.Converter("ARS","USD", valor));
+                    System.out.print("Pressione Enter para continuar!");
+                    pause.nextLine();
                     break;
-                case 3:
+                case 3: //USD to BRL
                     System.out.println("Insira o valor a ser convertido: ");
                     valor = leitura.nextDouble();
-                    try {
-                        double valorConvertido = Request.getExchangeRate("USD","BRL",valor);
-                        System.out.println(valor+" USD = " + valorConvertido + " BRL");
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
+                    System.out.println(gerenciador.Converter("USD","BRL", valor));
+                    System.out.print("Pressione Enter para continuar!");
+                    pause.nextLine();
                     break;
-                case 4:
+                case 4: //BRL to USD
                     System.out.println("Insira o valor a ser convertido: ");
                     valor = leitura.nextDouble();
-                    try {
-                        double valorConvertido = Request.getExchangeRate("BRL","USD",valor);
-                        System.out.println(valor+" BRL = " + valorConvertido + " USD");
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
+                    System.out.println(gerenciador.Converter("BRL","USD", valor));
+                    System.out.print("Pressione Enter para continuar!");
+                    pause.nextLine();
                     break;
-                case 5:
+                case 5: //USD to COP
                     System.out.println("Insira o valor a ser convertido: ");
                     valor = leitura.nextDouble();
-                    try {
-                        double valorConvertido = Request.getExchangeRate("USD","COP",valor);
-                        System.out.println(valor+" USD = " + valorConvertido + " COP");
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
+                    System.out.println(gerenciador.Converter("USD","COP", valor));
+                    System.out.print("Pressione Enter para continuar!");
+                    pause.nextLine();
                     break;
-                case 6:
+                case 6: //COP to USD
                     System.out.println("Insira o valor a ser convertido: ");
                     valor = leitura.nextDouble();
-                    try {
-                        double valorConvertido = Request.getExchangeRate("COP","USD",valor);
-                        System.out.println(valor+" COP = " + valorConvertido + " USD");
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
+                    System.out.println(gerenciador.Converter("COP","USD", valor));
+                    System.out.print("Pressione Enter para continuar!");
+                    pause.nextLine();
                     break;
                 case 7:
                     System.out.println("Saindo do programa...");
